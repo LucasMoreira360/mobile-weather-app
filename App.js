@@ -1,15 +1,10 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import { useState, useEffect } from "react";
-import {
-  EvilIcons,
-  Ionicons,
-  Feather,
-  Entypo,
-  FontAwesome5,
-} from "@expo/vector-icons";
+import { EvilIcons, Ionicons } from "@expo/vector-icons";
 import MyIconWithText from "./components/components-personalizado/MyIconWithText";
 import MyIconWithTemperature from "./components/components-personalizado/MyIconWithTemperature";
-import MyIconWithWind from "./components/components-personalizado/MyIconWithWind"
+import MyIconWithWind from "./components/components-personalizado/MyIconWithWind";
+import MainCard from "./components/MainCard";
 
 export default function App() {
   const [darkTheme, setDarkTheme] = useState(true);
@@ -30,6 +25,7 @@ export default function App() {
     temperatureText: {
       color: "white",
       fontSize: 60,
+      top: -30,
     },
     location: {
       position: "absolute",
@@ -51,12 +47,12 @@ export default function App() {
     },
     precipitationStyle: {
       alignSelf: "center",
-      bottom: 10,
+      bottom: 40,
       left: 10,
     },
     precipitationTemperature: {
       alignSelf: "center",
-      bottom: 10,
+      bottom: 40,
       left: 13,
     },
     containerInfoIcons: {
@@ -64,7 +60,7 @@ export default function App() {
       backgroundColor: "#0096C7",
       width: 343,
       height: 47,
-      top: 10,
+      top: -20,
       left: 4,
       borderRadius: 20,
     },
@@ -80,6 +76,9 @@ export default function App() {
       flexDirection: "row",
       justifyContent: "center",
     },
+    cardView: {
+      flexDirection: "row",
+    },
   });
 
   return (
@@ -90,12 +89,10 @@ export default function App() {
       <View style={styles.notification}>
         <Ionicons name="notifications-outline" size={25} color="white" />
       </View>
-
       <Image
         source={require("./images/ImageSun.png")}
         style={styles.ImageSunStyle}
       />
-
       <View style={styles.temperature}>
         <Text style={styles.temperatureText}>{currentTemperature}</Text>
         <Text style={[styles.temperatureText, { fontSize: 70 }]}>°</Text>
@@ -129,6 +126,9 @@ export default function App() {
             text="25 km/h"
           />
         </View>
+      </View>
+      <View style={styles.cardView}>
+        <MainCard />
       </View>
     </View>
   );
