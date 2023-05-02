@@ -6,11 +6,17 @@ import MyIconWithTemperature from "./components/components-personalizado/MyIconW
 import MyIconWithWind from "./components/components-personalizado/MyIconWithWind";
 import MainCard from "./components/MainCard";
 import NextForecastCard from "./components/NextForecastCard";
+import axiosInstance from "./helper/axios-instance";
 
 export default function App() {
-  const [darkTheme, setDarkTheme] = useState(true);
-  const [currentTemperature, setCurrentTemperature] = useState("30");
-  const [location, setLocation] = useState("BR, Itatiba");
+  const [currentTemperature, setCurrentTemperature] = useState([]);
+
+  useEffect(() => {
+    axiosInstance
+      .get("weather")
+      .then((res) => setCurrentTemperature(res.data.results))
+      .catch((err) => console.log(err));
+  }, []);
 
   const styles = StyleSheet.create({
     container: {
@@ -94,7 +100,9 @@ export default function App() {
             style={styles.ImageSunStyle}
           />
           <View style={styles.temperature}>
-            <Text style={styles.temperatureText}>{currentTemperature}</Text>
+            <Text style={styles.temperatureText}>
+              {currentTemperature.temp}
+            </Text>
             <Text style={[styles.temperatureText, { fontSize: 70 }]}>°</Text>
           </View>
           <View style={styles.precipitationStyle}>
@@ -102,7 +110,7 @@ export default function App() {
           </View>
           <View style={styles.precipitationTemperature}>
             <Text style={{ color: "white" }}>
-              Max: {currentTemperature}° Min: {currentTemperature}°
+              Max: {currentTemperature.temp} ° Min: {currentTemperature.temp} °
             </Text>
           </View>
           <View style={styles.containerInfoIcons}>

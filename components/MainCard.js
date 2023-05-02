@@ -4,6 +4,9 @@ import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 const MainCard = (props) => {
+
+
+  
   const styles = StyleSheet.create({
     cardPrimary: {
       display: "flex",
@@ -28,7 +31,7 @@ const MainCard = (props) => {
       height: 155,
       left: 20,
       gap: 25,
-      top: 5,
+      top: 15,
     },
     smallCardTwo: {
       display: "flex",
@@ -36,7 +39,7 @@ const MainCard = (props) => {
       height: 155,
       left: 110,
       gap: 25,
-      top: -150,
+      top: -140,
     },
     smallCardThree: {
       display: "flex",
@@ -44,7 +47,7 @@ const MainCard = (props) => {
       height: 155,
       left: 200,
       gap: 25,
-      top: -305,
+      top: -295,
     },
     smallCardfour: {
       display: "flex",
@@ -52,7 +55,7 @@ const MainCard = (props) => {
       height: 155,
       left: 280,
       gap: 25,
-      top: -460,
+      top: -450,
     },
     temperatureText: {
       color: "white",
@@ -62,10 +65,10 @@ const MainCard = (props) => {
   return (
     <View style={styles.cardPrimary}>
       <View style={styles.cardTitle}>
-        <Text style={{ color: "white", fontSize: 15, fontWeight: 700 }}>
+        <Text style={{ color: "white", fontSize: 17, fontWeight: 700 }}>
           Today
         </Text>
-        <Text style={{ color: "white", fontSize: 15, fontWeight: 400 }}>
+        <Text style={{ color: "white", fontSize: 17, fontWeight: 400 }}>
           Mar, 10
         </Text>
       </View>
