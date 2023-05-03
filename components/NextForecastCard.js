@@ -16,9 +16,9 @@ const NextForecastCard = (props) => {
       display: "flex",
       flexDirection: "row",
       justifyContent: "space-evenly",
-      gap: 170,
+      gap: 150,
       marginTop: 10,
-      marginLeft: 10,
+      marginLeft: 5,
     },
     smallCard: {
       display: "flex",
@@ -44,13 +44,13 @@ const NextForecastCard = (props) => {
     temperatureText: {
       color: "white",
       fontWeight: 700,
-      fontSize: 17,
+      fontSize: 13,
     },
   });
   return (
     <View style={styles.cardPrimary}>
       <View style={styles.cardTitle}>
-        <Text style={{ color: "white", fontSize: 17, fontWeight: 700 }}>
+        <Text style={{ color: "white", fontSize: 15, fontWeight: 700 }}>
           Next Forecast
         </Text>
         <Text style={{ color: "white", fontSize: 15, fontWeight: 400 }}>
@@ -59,14 +59,14 @@ const NextForecastCard = (props) => {
       </View>
       <View style={styles.smallCard}>
         <Text style={styles.temperatureText}>Monday</Text>
-        <Entypo name="water" size={35} color="white" />
-        <Text style={{ color: "white", fontSize: 13 }}>13°C 10°C</Text>
+        <Entypo name="water" size={30} color="white" />
+        <Text style={{ color: "white", fontSize: 10 }}>13°C 10°C</Text>
       </View>
 
       <View style={styles.smallCardTwo}>
         <Text style={styles.temperatureText}>Tuesday</Text>
         <FontAwesome5 name="cloud-sun-rain" size={30} color="white" />
-        <Text style={{ color: "white", fontSize: 13 }}>17°C 12°C</Text>
+        <Text style={{ color: "white", fontSize: 10 }}>17°C 12°C</Text>
       </View>
     </View>
   );
