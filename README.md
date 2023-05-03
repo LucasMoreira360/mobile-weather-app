@@ -44,4 +44,4 @@
 
 
 ###  1 - Ao acessar o projeto, você verá esta página inicial.
-![home](https://github.com/LucasMoreira360//blob/main/Readme/Screen-pronto.png)
+![](https://github.com/LucasMoreira360/mobile-weather-app/blob/main/images/Screen-Pronto.png)
