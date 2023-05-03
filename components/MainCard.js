@@ -1,12 +1,23 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { useState } from "react";
 import { Feather } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-const MainCard = (props) => {
+const MainCard = () => {
+  const [selectedCards, setSelectedCards] = useState([
+    false,
+    false,
+    false,
+    false,
+  ]);
 
+  const handleCardPress = (index) => {
+    const newSelectedCards = [...selectedCards];
+    newSelectedCards[index] = !selectedCards[index];
+    setSelectedCards(newSelectedCards);
+  };
 
-  
   const styles = StyleSheet.create({
     cardPrimary: {
       display: "flex",
@@ -61,6 +72,14 @@ const MainCard = (props) => {
       color: "white",
       fontSize: 18,
     },
+    cardSelected: {
+      position: "relative",
+      alignItems: "center",
+      borderRadius: 20,
+      borderWidth: 2,
+      borderColor: "#6CD4FF",
+      width: 55,
+    },
   });
   return (
     <View style={styles.cardPrimary}>
@@ -72,29 +91,52 @@ const MainCard = (props) => {
           Mar, 10
         </Text>
       </View>
-      <View style={styles.smallCard}>
-        <Text style={styles.temperatureText}>31°C</Text>
-        <Feather name="sun" size={35} color="orange" />
-        <Text style={{ color: "white", fontSize: 18 }}>07:00</Text>
-      </View>
 
-      <View style={styles.smallCardTwo}>
-        <Text style={styles.temperatureText}>28°C</Text>
-        <Ionicons name="partly-sunny" size={35} color="white" />
-        <Text style={{ color: "white", fontSize: 18 }}>10:00</Text>
-      </View>
+      <TouchableOpacity onPress={() => handleCardPress(0)}>
+        <View
+          style={[styles.smallCard, selectedCards[0] && styles.cardSelected]}
+        >
+          <Text style={styles.temperatureText}>31°C</Text>
+          <Feather name="sun" size={35} color="orange" />
+          <Text style={{ color: "white", fontSize: 18 }}>07:00</Text>
+        </View>
+      </TouchableOpacity>
 
-      <View style={styles.smallCardThree}>
-        <Text style={styles.temperatureText}>28°C</Text>
-        <Feather name="sun" size={35} color="orange" />
-        <Text style={{ color: "white", fontSize: 18 }}>11:00</Text>
-      </View>
+      <TouchableOpacity onPress={() => handleCardPress(1)}>
+        <View
+          style={[styles.smallCardTwo, selectedCards[1] && styles.cardSelected]}
+        >
+          <Text style={styles.temperatureText}>28°C</Text>
+          <Ionicons name="partly-sunny" size={35} color="white" />
+          <Text style={{ color: "white", fontSize: 18 }}>10:00</Text>
+        </View>
+      </TouchableOpacity>
 
-      <View style={styles.smallCardfour}>
-        <Text style={styles.temperatureText}>26°C</Text>
-        <FontAwesome5 name="cloud-sun-rain" size={35} color="white" />
-        <Text style={{ color: "white", fontSize: 18 }}>18:00</Text>
-      </View>
+      <TouchableOpacity onPress={() => handleCardPress(2)}>
+        <View
+          style={[
+            styles.smallCardThree,
+            selectedCards[2] && styles.cardSelected,
+          ]}
+        >
+          <Text style={styles.temperatureText}>28°C</Text>
+          <Feather name="sun" size={35} color="orange" />
+          <Text style={{ color: "white", fontSize: 18 }}>11:00</Text>
+        </View>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => handleCardPress(3)}>
+        <View
+          style={[
+            styles.smallCardfour,
+            selectedCards[3] && styles.cardSelected,
+          ]}
+        >
+          <Text style={styles.temperatureText}>26°C</Text>
+          <FontAwesome5 name="cloud-sun-rain" size={35} color="white" />
+          <Text style={{ color: "white", fontSize: 18 }}>18:00</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
