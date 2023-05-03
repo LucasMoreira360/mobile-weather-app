@@ -1,22 +1,27 @@
+import React, { useState, useEffect } from "react";
 import { Text, View, Image, ScrollView } from "react-native";
-import { useState, useEffect } from "react";
 import { EvilIcons, Ionicons } from "@expo/vector-icons";
+import axiosInstance from "./service/axios-instance";
 import MyIconWithText from "./components/MyIconWithText";
 import MyIconWithTemperature from "./components/MyIconWithTemperature";
 import MyIconWithWind from "./components/MyIconWithWind";
 import MainCard from "./components/MainCard";
 import NextForecastCard from "./components/NextForecastCard";
-import axiosInstance from "./service/axios-instance";
 import styles from "./style";
 
 export default function App() {
-  const [currentTemperature, setCurrentTemperature] = useState([]);
+  const [currentTemperature, setCurrentTemperature] = useState({});
 
   useEffect(() => {
-    axiosInstance
-      .get("weather")
-      .then((res) => setCurrentTemperature(res.data.results))
-      .catch((err) => console.log(err));
+    const fetchWeatherData = async () => {
+      try {
+        const res = await axiosInstance.get("weather");
+        setCurrentTemperature(res.data.results);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchWeatherData();
   }, []);
 
   return (
